@@ -3,17 +3,17 @@
 Die ersten beiden Aufgaben dienen zur Vertiefung Ihrer praktischen Erfahrungen in Rust. Sie implementieren einen Stack und eine Baumstruktur.
 
 ## Allgemeine Hinweise
-Für diese und alle folgenden Praktikumsaufgaben gilt, dass Einsendungen, die in der jeweils mitgegebenen Testumgebung nicht laufen, mit null Punkten bewertet werden! Das beinhaltet insbesondere alle Programme, die sich nicht fehlerfrei kompilieren lassen. Da Cargo für die Ausführung verantwortlich ist, sollte das Projekt bei Ihnen am Ende mit `cargo test` ohne Fehler und Warnungen durchlaufen. 
+Für diese und alle folgenden Praktikumsaufgaben gilt, dass Einsendungen, die in der jeweils mitgegebenen Testumgebung nicht laufen, mit null Punkten bewertet werden! Das beinhaltet insbesondere alle Programme, die sich nicht fehlerfrei kompilieren lassen. Da Cargo für die Ausführung verantwortlich ist, sollte das Projekt bei Ihnen am Ende mit `cargo test` ohne Fehler und Warnungen durchlaufen.
 
 
 ## Abgabemodus
-Die Lösung ist in einem eigenen Git-Repository abzugeben. 
-Sie können in ihrer Lösung jedoch beliebige Hilfstypen und Module selbst definieren. 
-Die grundlegende Struktur des hier mitgegebenen Templates sollte jedoch nicht verändert werden. 
-Insbesondere ist es wichtig, dass die öffentliche Schnittstelle der Library, welche über die Signaturen der Methoden und Funktionen und deren absoluten Pfad definiert wird. 
+Die Lösung ist in einem eigenen Git-Repository abzugeben.
+Sie können in ihrer Lösung jedoch beliebige Hilfstypen und Module selbst definieren.
+Die grundlegende Struktur des hier mitgegebenen Templates sollte jedoch nicht verändert werden.
+Insbesondere ist es wichtig, dass die öffentliche Schnittstelle der Library, welche über die Signaturen der Methoden und Funktionen und deren absoluten Pfad definiert wird.
 
 Zur Lösung der Aufgaben steht für Sie dieses Repository mit
-- vorgegebenen Modulen [stack](src/stack.rs) und [syntree](src/syntree.rs)
+- vorgegebenen Modulen [stack](src/stack.rs) und [syntax_tree](src/syntax_tree.rs)
 - der vorgegebenen Schnittstelle der Library in [lib](src/lib.rs)
 - eine Reihe von Testfällen (Unit-Tests) innerhalb der Module
 
@@ -65,29 +65,46 @@ Implementieren Sie eine Datenstruktur, die beliebig verzweigte Bäume speichern 
 Die hier von Ihnen zu implementierende Datenstruktur dient der Repräsentation eines abstrakten Syntaxbaumes.
 
 ```rust
-struct SynTree;
+struct SyntaxTree;
 
-impl<'a, T> SynTree<T> {
-    /// Initialisiert einen neuen Syntaxbaum
-    pub fn new(value: T, id: ID) -> Syntree<T> { todo!() }
+impl<T> SyntaxTree<T> {
+    /// Create a SyntaxTree with a root node that carries the given value
+    pub fn new(value: T) -> SyntaxTree<T> {
+        todo!()
+    }
 
-    /// Fügt dem angegebenen Elternknoten den mitgegebenen Syntaxbaum als letztes Kind hinzu
-    pub fn push_node(&mut self, parent_id: ID, new_node: Syntree<T>) -> Result<(), String> { todo!() }
+    /// Add another SyntaxTree as last child of this tree
+    pub fn push_node(&mut self, new_node: SyntaxTree<T>) {
+        todo!()
+    }
 
-    /// Fügt dem angegebenen Elternknoten den mitgegebenen Syntaxbaum als erstes Kind hinzu
-    pub fn prepend_node(&mut self, parent_id: ID, new_node: Syntree<T>) -> Result<(), String> { todo!() }
+    /// Add another SyntaxTree as first child of this tree
+    pub fn prepend_node(&mut self, new_node: SyntaxTree<T>) {
+        todo!()
+    }
+    
+    /// Insert the given SyntaxTree into the children of this tree at the given index
+    pub fn insert_node(&mut self, index: usize, new_node: SyntaxTree<T>) {
+        todo!()
+    }
+    
+    /// Perform a depth-first search with the given predicate.
+    /// The method returns a reference to the first SyntaxTree instance for which the predicate
+    /// return true. If no instance is found, None is returned.
+    pub fn find_node(&self, predicate: fn(&SyntaxTree<T>) -> bool) -> Option<&SyntaxTree<T>> {
+        todo!()
+    }
 
-    /// Fügt dem angegebenen Elternknoten den mitgegebenen Syntaxbaum als Kind an der indizierten Stelle hinzu
-    pub fn insert_node(
+    /// Perform a depth-first search with the given predicate.
+    /// The method returns a mutable reference to the first SyntaxTree instance for which the predicate
+    /// return true. If no instance is found, None is returned.
+    pub fn find_node_mut(
         &mut self,
-        parent_id: ID,
-        index: usize,
-        new_node: Syntree<T>,
-    ) -> Result<(), String> { todo!() }
-
-    /// Suche nach dem ersten Knoten mit der angegebenen ID und liefere eine mutable Referenz zurück
-    pub fn seek_node_mut(&'a mut self, id: &ID) -> Option<&'a mut Syntree<T>> { todo!() }
+        predicate: fn(&SyntaxTree<T>) -> bool,
+    ) -> Option<&SyntaxTree<T>> {
+        todo!()
+    }
 }
 ```
-- Die zu implementierende Datenstruktur Syntree soll Baumknoten in beliebig komplexen Konfigurationen speichern können und davon beliebig viele.
-- Vervollständigen Sie die Implementierung in der Datei [syntree.rs](src/syntree.rs).
+- Die zu implementierende Datenstruktur SyntaxTree soll Baumknoten in beliebig komplexen Konfigurationen speichern können und davon beliebig viele.
+- Vervollständigen Sie die Implementierung in der Datei [syntax_tree](src/syntax_tree.rs).

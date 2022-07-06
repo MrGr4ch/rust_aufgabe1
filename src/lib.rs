@@ -1,5 +1,5 @@
 mod stack;
-mod syntree;
+mod syntax_tree;
 
 pub trait Stack {
     fn init() -> Self;
@@ -14,8 +14,8 @@ pub trait Stack {
 }
 
 pub use stack::ListStack;
-pub use syntree::Syntree;
-pub use syntree::ID;
+pub use syntax_tree::SyntaxTree;
+pub use syntax_tree::ID;
 
 #[cfg(test)]
 mod tests {}
