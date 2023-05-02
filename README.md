@@ -1,21 +1,22 @@
+
 # Übungsblatt 1
 ## Generelles
 Die ersten beiden Aufgaben dienen zur Vertiefung Ihrer praktischen Erfahrungen in Rust. Sie implementieren einen Stack und eine Baumstruktur.
 
 ## Allgemeine Hinweise
-Für diese und alle folgenden Praktikumsaufgaben gilt, dass Einsendungen, die in der jeweils mitgegebenen Testumgebung nicht laufen, mit null Punkten bewertet werden! Das beinhaltet insbesondere alle Programme, die sich nicht fehlerfrei kompilieren lassen. Da Cargo für die Ausführung verantwortlich ist, sollte das Projekt bei Ihnen am Ende mit `cargo test` ohne Fehler und Warnungen durchlaufen.
+Für diese und alle folgenden Praktikumsaufgaben gilt, dass Einsendungen, die in der jeweils mitgegebenen Testumgebung nicht laufen, entsprechend Punktabzug erhalten! Das beinhaltet insbesondere alle Programme, die sich nicht fehlerfrei kompilieren lassen. Da Cargo für die Ausführung verantwortlich ist, sollte das Projekt bei Ihnen am Ende mit `cargo test` ohne Fehler und Warnungen durchlaufen. 
 
 
 ## Abgabemodus
-Die Lösung ist in einem eigenen Git-Repository abzugeben.
-Sie können in ihrer Lösung jedoch beliebige Hilfstypen und Module selbst definieren.
-Die grundlegende Struktur des hier mitgegebenen Templates sollte jedoch nicht verändert werden.
-Insbesondere ist es wichtig, dass die öffentliche Schnittstelle der Library, welche über die Signaturen der Methoden und Funktionen und deren absoluten Pfad definiert wird.
+Die Lösung ist in einem eigenen Git-Repository abzugeben. 
+Sie können in ihrer Lösung jedoch beliebige Hilfstypen und Module selbst definieren. 
+Die grundlegende Struktur des hier mitgegebenen Templates sollte jedoch nicht verändert werden. 
+Insbesondere ist es wichtig, dass die öffentliche Schnittstelle der Library, welche über die Signaturen der Methoden und Funktionen und deren absoluten Pfad definiert wird, nicht verändert wird. 
 
 Zur Lösung der Aufgaben steht für Sie dieses Repository mit
 - vorgegebenen Modulen [stack](src/stack.rs) und [syntax_tree](src/syntax_tree.rs)
 - der vorgegebenen Schnittstelle der Library in [lib](src/lib.rs)
-- eine Reihe von Testfällen (Unit-Tests) innerhalb der Module
+- einer Reihe von Testfällen (Unit-Tests) innerhalb der Module
 
 zur Verfügung.
 > Sie können die Implementierung mit `cargo test` prüfen. Mit `cargo test -- --nocapture` werden Konsolenausgaben auch bei korrekten Tests angezeigt.

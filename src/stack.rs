@@ -73,15 +73,17 @@ mod tests {
     use crate::stack::ListStack;
     use crate::Stack;
     use std::fmt::Debug;
-    use std::thread::sleep;
-    use std::time::{Duration, Instant};
 
     #[test]
-    fn fill_and_clear() {
-        println! {"Testing ListStack"}
-        fill_and_clear_impl(ListStack::init());
+    fn vec_fill_and_clear() {
         println! {"Testing Vec<T>"}
         fill_and_clear_impl(Vec::init());
+    }
+
+    #[test]
+    fn linked_fill_and_clear() {
+        println! {"Testing ListStack"}
+        fill_and_clear_impl(ListStack::init());
     }
 
     fn fill_and_clear_impl<T: Stack + Debug>(mut stack: T) {
@@ -102,57 +104,5 @@ mod tests {
         }
 
         assert!(stack.is_empty())
-    }
-
-    const BENCHMARK_SIZE: i32 = 10_000_000;
-    #[test]
-    fn benchmark() {
-        let (pushed, popped) = bench(ListStack::init());
-        println!(
-            "Own implementation took {}ms for push and {} for pop.",
-            pushed, popped
-        );
-
-        let (pushed, popped) = bench(Vec::init());
-        println!(
-            "Vec wrapper took {}ms for push and {} for pop.",
-            pushed, popped
-        );
-    }
-
-    fn bench<T: Stack>(mut stack: T) -> (u128, u128) {
-        let start = Instant::now();
-        for i in 1..BENCHMARK_SIZE {
-            stack.push_val(i);
-        }
-        println!("Pushed all elements");
-        let pushed = start.elapsed().as_millis();
-        let start = Instant::now();
-        while stack.pop_val().is_some() {}
-        println!("Popped all elements");
-        let popped = start.elapsed().as_millis();
-        (pushed, popped)
-    }
-
-    #[test]
-    fn test_mem() {
-        let stack = ListStack::init();
-        mem_test(stack);
-        println!("Finished memory test for ListStack");
-
-        println!("Sleeping for 10 seconds.");
-        sleep(Duration::from_secs(10));
-
-        let stack = Vec::init();
-        mem_test(stack);
-        println!("Finished memory test for Vec<T>");
-    }
-
-    fn mem_test<T: Stack>(mut stack: T) {
-        for i in 1..BENCHMARK_SIZE {
-            stack.push_val(i);
-            stack.pop_val();
-        }
-        println!("Completed memory test elements");
     }
 }
