@@ -3,7 +3,7 @@ use crate::Stack;
 // TODO Complete implementation
 impl Stack for Vec<i32> {
     fn init() -> Self {
-        Stack {new_vec_stack: Vec::new()}
+        new_vec_stack: Vec::new()
     }
 
     fn push_val(&mut self, i: i32) {
@@ -11,18 +11,15 @@ impl Stack for Vec<i32> {
     }
 
     fn top_val(&self) -> Option<&i32> {
-        let i = self.len();
-        let r = self[i-1];
+        self.last()
     }
 
     fn pop_val(&mut self) -> Option<i32> {
-        let i = self.pop;
+        self.pop()
     }
 
     fn is_empty(&self) -> bool {
-        let i = self.len();
-        let u :usize = 0;
-        return i == u
+        self.is_empty()
     }
 }
 
