@@ -3,7 +3,7 @@ use crate::Stack;
 // TODO Complete implementation
 impl Stack for Vec<i32> {
     fn init() -> Self {
-        new_vec_stack: Vec::new()
+        Vec::new()
     }
 
     fn push_val(&mut self, i: i32) {
