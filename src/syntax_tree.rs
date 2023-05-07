@@ -87,8 +87,8 @@ impl<T> SyntaxTree<T> {
         if predicate(self) {
             Some(self)
         } else {
-            for mut node in self.children.iter(){
-                let f = SyntaxTree::find_node(&mut node, predicate);
+            for node in self.children.iter_mut(){
+                let f = SyntaxTree::find_node_mut(node, predicate);
                 if f.is_some() {
                     return f
                 }
